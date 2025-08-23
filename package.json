@@ -1,0 +1,34 @@
+{
+  "name": "pixelwind",
+  "version": "1.0.0",
+  "description": "Pixel-based utility-first CSS: spacing, gap, width/height (1–30px) with optional responsive variants.",
+  "main": "pixelwind.css",
+  "style": "pixelwind.css",
+  "files": [
+    "pixelwind.css",
+    "pixelwind.min.css",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "css",
+    "utilities",
+    "pixel",
+    "spacing",
+    "margin",
+    "padding",
+    "gap",
+    "width",
+    "height",
+    "utility-first"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
