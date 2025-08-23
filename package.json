@@ -38,6 +38,7 @@
   "bugs": {
     "url": "https://github.com/therohitmahar/pixelwind/issues"
   },
+  "homepage": "https://therohitmahar.github.io/pixelwind/",
   "unpkg": "pixelwind.css",
   "jsdelivr": "pixelwind.css"
 }
