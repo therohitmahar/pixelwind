@@ -29,6 +29,13 @@
     "height",
     "utility-first"
   ],
-  "author": "Your Name",
-  "license": "MIT"
+  "author": "therohitmahar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/therohitmahar/pixelwind"
+  },
+  "bugs": {
+    "url": "https://github.com/therohitmahar/pixelwind/issues"
+  }
 }
