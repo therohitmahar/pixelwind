@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
+    <title>Pixelwind - Docs</title>
+    <link rel="icon" type="image/icon" href="../images/favicon.ico" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      /* For code block scrolling */
+      .docs-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body class="bg-slate-50 dark:bg-[#101a23]">
+    <div
+      class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden"
+      style="font-family: 'Space Grotesk', 'Noto Sans', sans-serif"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <header
+          class="fixed w-full top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] dark:border-b-[#223649] bg-slate-50/70 dark:bg-[#101a23]/70 backdrop-blur-md shadow-sm px-10 py-3"
+        >
+          <div class="flex items-center gap-8">
+            <a
+              href="index.html"
+              class="flex items-center gap-4 text-[#0d141c] dark:text-white"
+            >
+              <div class="size-4">
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </div>
+              <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">
+                Pixelwind
+              </h2>
+            </a>
+            <div class="flex items-center gap-9">
+              <a
+                class="text-[#0d80f2] dark:text-white text-sm font-bold leading-normal"
+                href="docs.html"
+                >Docs</a
+              >
+              <a
+                class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
+                href="index.html#examples"
+                >Examples</a
+              >
+              <a
+                class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
+                href="https://github.com/therohitmahar/pixelwind"
+                target="_blank"
+                >GitHub</a
+              >
+            </div>
+          </div>
+          <div class="flex flex-1 justify-end gap-4">
+            <a href="index.html#quick-start" class="flex items-center">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0d80f2] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Get Started</span>
+              </button>
+            </a>
+          </div>
+        </header>
+        <main class="gap-1 px-6 flex flex-1 justify-center py-5 pt-16">
+          <aside
+            class="fixed top-[56px] left-0 z-40 layout-content-container flex-col w-60 h-[calc(100vh-56px)] hidden sm:flex bg-white/20 dark:bg-[#0d141c]/20 backdrop-blur-lg border-r border-white/20 dark:border-gray-800"
+          >
+            <div class="h-full flex-col p-4 overflow-y-auto">
+              <nav class="flex flex-col gap-1">
+                <p
+                  class="px-3 pt-2 pb-1 text-xs font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase"
+                >
+                  Spacing
+                </p>
+                <a
+                  href="#padding"
+                  class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-200 dark:bg-[#223649]"
+                >
+                  <p
+                    class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
+                  >
+                    Padding
+                  </p>
+                </a>
+                <a
+                  href="#margin"
+                  class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-[#223649]"
+                >
+                  <p
+                    class="text-[#49739c] dark:text-[#90adcb] text-sm font-medium leading-normal"
+                  >
+                    Margin
+                  </p>
+                </a>
+                <a
+                  href="#gap"
+                  class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-[#223649]"
+                >
+                  <p
+                    class="text-[#49739c] dark:text-[#90adcb] text-sm font-medium leading-normal"
+                  >
+                    Gap
+                  </p>
+                </a>
+                <p
+                  class="px-3 pt-4 pb-1 text-xs font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase"
+                >
+                  Sizing
+                </p>
+                <a
+                  href="#width"
+                  class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-[#223649]"
+                >
+                  <p
+                    class="text-[#49739c] dark:text-[#90adcb] text-sm font-medium leading-normal"
+                  >
+                    Width
+                  </p>
+                </a>
+                <a
+                  href="#height"
+                  class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-[#223649]"
+                >
+                  <p
+                    class="text-[#49739c] dark:text-[#90adcb] text-sm font-medium leading-normal"
+                  >
+                    Height
+                  </p>
+                </a>
+              </nav>
+            </div>
+          </aside>
+          <div
+            class="layout-content-container flex flex-col max-w-[960px] flex-1 ml-0 sm:ml-60"
+          >
+            <section id="padding" class="docs-section scroll-mt-24">
+              <div class="px-4 pt-8">
+                <h2
+                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
+                >
+                  Padding
+                </h2>
+                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
+                  Utilities for controlling an element's padding from 1px to
+                  30px.
+                </p>
+              </div>
+              <div class="px-4 py-8">
+                <div
+                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
+                >
+                  <div
+                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
+                  >
+                    <div>Class</div>
+                    <div>CSS</div>
+                  </div>
+                  <div class="docs-table-container">
+                    <div
+                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
+                    ></div>
+                  </div>
+                  <div
+                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
+                  >
+                    <button
+                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
+                    >
+                      Show More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="margin" class="docs-section scroll-mt-24">
+              <div class="px-4 pt-8">
+                <h2
+                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
+                >
+                  Margin
+                </h2>
+                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
+                  Utilities for controlling an element's margin from 1px to
+                  30px.
+                </p>
+              </div>
+              <div class="px-4 py-8">
+                <div
+                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
+                >
+                  <div
+                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
+                  >
+                    <div>Class</div>
+                    <div>CSS</div>
+                  </div>
+                  <div class="docs-table-container">
+                    <div
+                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
+                    ></div>
+                  </div>
+                  <div
+                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
+                  >
+                    <button
+                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
+                    >
+                      Show More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="gap" class="docs-section scroll-mt-24">
+              <div class="px-4 pt-8">
+                <h2
+                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
+                >
+                  Gap
+                </h2>
+                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
+                  Utilities for controlling the gap between grid and flexbox
+                  items from 1px to 30px.
+                </p>
+              </div>
+              <div class="px-4 py-8">
+                <div
+                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
+                >
+                  <div
+                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
+                  >
+                    <div>Class</div>
+                    <div>CSS</div>
+                  </div>
+                  <div class="docs-table-container">
+                    <div
+                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
+                    ></div>
+                  </div>
+                  <div
+                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
+                  >
+                    <button
+                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
+                    >
+                      Show More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="width" class="docs-section scroll-mt-24">
+              <div class="px-4 pt-8">
+                <h2
+                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
+                >
+                  Width
+                </h2>
+                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
+                  Utilities for setting an element's width from 1px to 30px.
+                </p>
+              </div>
+              <div class="px-4 py-8">
+                <div
+                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
+                >
+                  <div
+                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
+                  >
+                    <div>Class</div>
+                    <div>CSS</div>
+                  </div>
+                  <div class="docs-table-container">
+                    <div
+                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
+                    ></div>
+                  </div>
+                  <div
+                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
+                  >
+                    <button
+                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
+                    >
+                      Show More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="height" class="docs-section scroll-mt-24">
+              <div class="px-4 pt-8">
+                <h2
+                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
+                >
+                  Height
+                </h2>
+                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
+                  Utilities for setting an element's height from 1px to 30px.
+                </p>
+              </div>
+              <div class="px-4 py-8 pb-12">
+                <div
+                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
+                >
+                  <div
+                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
+                  >
+                    <div>Class</div>
+                    <div>CSS</div>
+                  </div>
+                  <div class="docs-table-container">
+                    <div
+                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
+                    ></div>
+                  </div>
+                  <div
+                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
+                  >
+                    <button
+                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
+                    >
+                      Show More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Define utility prefixes and their CSS properties ---
+        const paddingUtilities = [
+          { prefix: "p", prop: "padding" },
+          { prefix: "pt", prop: "padding-top" },
+          { prefix: "pr", prop: "padding-right" },
+          { prefix: "pb", prop: "padding-bottom" },
+          { prefix: "pl", prop: "padding-left" },
+        ];
+        const marginUtilities = [
+          { prefix: "m", prop: "margin" },
+          { prefix: "mt", prop: "margin-top" },
+          { prefix: "mr", prop: "margin-right" },
+          { prefix: "mb", prop: "margin-bottom" },
+          { prefix: "ml", prop: "margin-left" },
+        ];
+        const gapUtilities = [{ prefix: "gap", prop: "gap" }];
+        const widthUtilities = [{ prefix: "w", prop: "width" }];
+        const heightUtilities = [{ prefix: "h", prop: "height" }];
+
+        // --- Function to generate and render utility classes ---
+        function generateAndRenderUtilities(
+          sectionId,
+          utilities,
+          visibleCount = 10
+        ) {
+          const container = document.querySelector(
+            `#${sectionId} .docs-content`
+          );
+          if (!container) return;
+
+          let html = "";
+          let rowCounter = 0;
+
+          utilities.forEach((util) => {
+            for (let i = 1; i <= 30; i++) {
+              const isHidden = rowCounter >= visibleCount;
+              const hiddenClass = isHidden ? "hidden hidden-row" : "";
+
+              html += `
+                        <div class="flex justify-between items-center py-3 ${hiddenClass}">
+                            <code class="text-[#0d80f2] font-mono">${util.prefix}-${i}px</code>
+                            <code class="text-[#49739c] dark:text-[#90adcb] font-mono">${util.prop}: ${i}px;</code>
+                        </div>
+                    `;
+              rowCounter++;
+            }
+          });
+          container.innerHTML = html;
+        }
+
+        // --- Render all sections ---
+        generateAndRenderUtilities("padding", paddingUtilities, 10);
+        generateAndRenderUtilities("margin", marginUtilities, 10);
+        generateAndRenderUtilities("gap", gapUtilities, 10);
+        generateAndRenderUtilities("width", widthUtilities, 10);
+        generateAndRenderUtilities("height", heightUtilities, 10);
+
+        // --- Theme Toggler ---
+        const themeToggleBtn = document.getElementById("theme-toggle-btn");
+        if (themeToggleBtn) {
+          themeToggleBtn.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark");
+            localStorage.theme = document.documentElement.classList.contains(
+              "dark"
+            )
+              ? "dark"
+              : "light";
+          });
+        }
+
+        // --- Show More/Less Toggler ---
+        const showMoreButtons = document.querySelectorAll(".show-more-btn");
+        showMoreButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const section = button.closest(".docs-section, section"); // Find parent section
+            const hiddenRows = section.querySelectorAll(".hidden-row");
+
+            let isShowing = button.getAttribute("data-showing") === "true";
+
+            hiddenRows.forEach((row) => {
+              row.classList.toggle("hidden");
+            });
+
+            isShowing = !isShowing;
+            button.textContent = isShowing ? "Show Less" : "Show More";
+            button.setAttribute("data-showing", isShowing);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

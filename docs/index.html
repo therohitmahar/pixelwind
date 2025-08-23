@@ -1,94 +1,645 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pixelwind – Utility-first CSS in Pixels</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/pixelwind@latest/index.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Space+Grotesk%3Awght%40400%3B500%3B700"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pixelwind@1.0.2/pixelwind.min.css"
+    />
+    <title>Pixelwind - Home</title>
+    <link rel="icon" type="image/icon" href="../images/favicon.ico" />
     <style>
-      body {
-        font-family: system-ui, sans-serif;
-        line-height: 1.5;
-        padding: 20px;
-        max-width: 900px;
-        margin: auto;
+      /* Simple styles for code block and copy feedback */
+      .code-block {
+        background: #182634; /* dark:bg-[#182634] */
+        color: #90adcb; /* dark:text-[#90adcb] */
+        font-family: monospace;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        position: relative;
       }
-      .card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 20px;
-        background: #fafafa;
+      .code-block button {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: #223649;
+        color: white;
+        border: none;
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-size: 0.875rem;
       }
-      code {
-        background: #f4f4f4;
-        padding: 2px 6px;
-        border-radius: 4px;
+      .dark .code-block {
+        background: #182634;
       }
-      pre {
-        background: #2d2d2d;
-        color: #f8f8f2;
-        padding: 12px;
-        border-radius: 8px;
-        overflow-x: auto;
+      html:not(.dark) .code-block {
+        background: #e7edf4;
+        color: #49739c;
       }
-      .title {
-        font-size: 2rem;
-        margin-bottom: 10px;
+      html:not(.dark) .code-block button {
+        background: #cedbe8;
+        color: #0d141c;
       }
     </style>
+    <script>
+      // Add this configuration script
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      // Set theme on page load
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
-  <body>
-    <header class="mb-20px">
-      <h1 class="title">🎨 Pixelwind</h1>
-      <p>
-        Utility-first CSS framework with pixel-based classes like
-        <code>p-20px</code>, <code>mb-10px</code>, and <code>gap-5px</code>.
-      </p>
-      <a href="https://github.com/YOUR_USERNAME/pixelwind" target="_blank"
-        >View on GitHub →</a
-      >
-    </header>
+  <body class="bg-slate-50 dark:bg-[#101a23]">
+    <div
+      class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden"
+      style="font-family: 'Space Grotesk', 'Noto Sans', sans-serif"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <header
+          class="fixed w-full top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] dark:border-b-[#223649] bg-slate-50/80 dark:bg-[#101a23]/80 backdrop-blur-sm px-10 py-3"
+        >
+          <div class="flex items-center gap-8">
+            <a
+              href="index.html"
+              class="flex items-center gap-4 text-[#0d141c] dark:text-white"
+            >
+              <div class="size-4">
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </div>
+              <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">
+                Pixelwind
+              </h2>
+            </a>
+            <div class="flex items-center gap-9">
+              <a
+                class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
+                href="docs.html"
+                >Docs</a
+              >
+              <a
+                class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
+                href="#examples"
+                >Examples</a
+              >
+              <a
+                class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
+                href="https://github.com/therohitmahar/pixelwind"
+                target="_blank"
+                >GitHub</a
+              >
+            </div>
+          </div>
+          <div class="flex flex-1 justify-end gap-4">
+            <a href="#quick-start" class="flex items-center">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0d80f2] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Get Started</span>
+              </button>
+            </a>
+           
+          </div>
+        </header>
 
-    <section class="card">
-      <h2>Installation</h2>
-      <p>Use Pixelwind in your project in two ways:</p>
-      <h3>1. CDN (HTML)</h3>
-      <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/pixelwind@latest/index.css"&gt;</code></pre>
+        <main class="lg:px-40 flex flex-1 justify-center py-5 pt-16">
+          <div
+            class="layout-content-container flex flex-col max-w-[960px] flex-1"
+          >
+            <div class="@container">
+              <div class="@[480px]:p-4">
+                <div
+                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4"
+                  style="
+                    background-image: linear-gradient(
+                        rgba(0, 0, 0, 0.1) 0%,
+                        rgba(0, 0, 0, 0.4) 100%
+                      ),
+                      url('https://images.unsplash.com/photo-1558518354-e91a0c3609ce?q=80&w=2670&auto=format&fit=crop');
+                  "
+                >
+                  <div class="flex flex-col gap-2 text-center">
+                    <h1
+                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                    >
+                      Pixelwind – Pixel-perfect CSS utilities
+                    </h1>
+                    <h2
+                      class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
+                    >
+                      Drop-in, utility-first CSS classes for fast styling
+                      without configuration.
+                    </h2>
+                  </div>
+                  <div class="flex-wrap gap-3 flex justify-center">
+                    <a href="#quick-start">
+                      <button
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#0d80f2] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                      >
+                        <span class="truncate">Get Started</span>
+                      </button>
+                    </a>
+                    <a
+                      href="https://github.com/therohitmahar/pixelwind"
+                      target="_blank"
+                    >
+                      <button
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#e7edf4] dark:bg-[#223649] text-[#0d141c] dark:text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                      >
+                        <span class="truncate">GitHub</span>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <section class="bg-[#0d141c] text-gray-200 py-16 px-6 @container">
+              <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">
+                  🚀 Quick Start
+                </h2>
+                <p class="text-lg text-gray-400 mb-8">
+                  Get started with Pixelwind by adding the following line to
+                  your project’s
+                  <code class="bg-gray-800 px-2 py-1 rounded text-pink-400"
+                    >head</code
+                  >:
+                </p>
 
-      <h3>2. npm (React, Vite, etc.)</h3>
-      <pre><code>npm install pixelwind</code></pre>
-      <pre><code>import "pixelwind/index.css";</code></pre>
-    </section>
+                <div
+                  class="relative bg-gray-900 text-left rounded-xl shadow-lg overflow-x-auto"
+                >
+                  <pre class="p-5 text-pink-400 text-sm font-mono">
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixelwind@1.0.2/pixelwind.min.css"&gt;
+      </pre
+                  >
+                  <button
+                    class="absolute top-2 right-2 bg-pink-500 hover:bg-pink-600 text-white text-xs px-3 py-1 rounded-md shadow"
+                  >
+                    Copy
+                  </button>
+                </div>
 
-    <section class="card">
-      <h2>Examples</h2>
-      <div class="p-20px mb-10px" style="background: #e0f7fa">
-        Box with <code>p-20px mb-10px</code>
+                <p class="mt-8 text-gray-400">Or install via npm:</p>
+                <div
+                  class="bg-gray-900 rounded-xl mt-3 overflow-x-auto text-left"
+                >
+                  <pre class="p-5 text-green-400 text-sm font-mono">
+npm install pixelwind
+      </pre
+                  >
+                </div>
+              </div>
+            </section>
+
+            <div class="flex flex-col gap-10 px-4 py-10 @container">
+              <div class="flex flex-col gap-4">
+                <h1
+                  class="text-[#0d141c] dark:text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+                >
+                  Features
+                </h1>
+                <p
+                  class="text-[#49739c] dark:text-[#90adcb] text-base font-normal leading-normal max-w-[720px]"
+                >
+                  Pixelwind provides a comprehensive set of CSS utilities
+                  designed for pixel-perfect precision and ease of use.
+                </p>
+              </div>
+              <div
+                class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0"
+              >
+                <div
+                  class="flex flex-1 gap-3 rounded-lg border border-[#cedbe8] dark:border-[#314d68] bg-slate-50 dark:bg-[#182634] p-4 flex-col"
+                >
+                  <div class="text-[#0d141c] dark:text-white">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24px"
+                      height="24px"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M48,64a8,8,0,0,1,8-8H72V40a8,8,0,0,1,16,0V56h16a8,8,0,0,1,0,16H88V88a8,8,0,0,1-16,0V72H56A8,8,0,0,1,48,64ZM184,192h-8v-8a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0v-8h8a8,8,0,0,0,0-16Zm56-48H224V128a8,8,0,0,0-16,0v16H192a8,8,0,0,0,0,16h16v16a8,8,0,0,0,16,0V160h16a8,8,0,0,0,0-16ZM219.31,80,80,219.31a16,16,0,0,1-22.62,0L36.68,198.63a16,16,0,0,1,0-22.63L176,36.69a16,16,0,0,1,22.63,0l20.68,20.68A16,16,0,0,1,219.31,80Zm-54.63,32L144,91.31l-96,96L68.68,208ZM208,68.69,187.31,48l-32,32L176,100.69Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h2
+                      class="text-[#0d141c] dark:text-white text-base font-bold leading-tight"
+                    >
+                      Utility-first
+                    </h2>
+                    <p
+                      class="text-[#49739c] dark:text-[#90adcb] text-sm font-normal leading-normal"
+                    >
+                      Style elements with classes like <code>p-8px</code> and
+                      <code>m-16px</code>. Covers a 1px to 30px scale for
+                      ultimate precision.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-1 gap-3 rounded-lg border border-[#cedbe8] dark:border-[#314d68] bg-slate-50 dark:bg-[#182634] p-4 flex-col"
+                >
+                  <div class="text-[#0d141c] dark:text-white">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24px"
+                      height="24px"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M221.28,34.75a64,64,0,0,0-90.49,0L60.69,104A15.9,15.9,0,0,0,56,115.31v73.38L26.34,218.34a8,8,0,0,0,11.32,11.32L67.32,200H140.7A15.92,15.92,0,0,0,152,195.32l0,0,69.23-70A64,64,0,0,0,221.28,34.75ZM142.07,46.06A48,48,0,0,1,211.79,112H155.33l34.35-34.34a8,8,0,0,0-11.32-11.32L120,124.69V67.87ZM72,115.35l32-31.67v57l-32,32ZM140.7,184H83.32l56-56h56.74Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h2
+                      class="text-[#0d141c] dark:text-white text-base font-bold leading-tight"
+                    >
+                      Lightweight
+                    </h2>
+                    <p
+                      class="text-[#49739c] dark:text-[#90adcb] text-sm font-normal leading-normal"
+                    >
+                      With a focused set of utilities, the CSS footprint is
+                      minimal, ensuring fast load times.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-1 gap-3 rounded-lg border border-[#cedbe8] dark:border-[#314d68] bg-slate-50 dark:bg-[#182634] p-4 flex-col"
+                >
+                  <div class="text-[#0d141c] dark:text-white">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24px"
+                      height="24px"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h2
+                      class="text-[#0d141c] dark:text-white text-base font-bold leading-tight"
+                    >
+                      Responsive Ready
+                    </h2>
+                    <p
+                      class="text-[#49739c] dark:text-[#90adcb] text-sm font-normal leading-normal"
+                    >
+                      Includes responsive modifiers like <code>-1600</code> for
+                      seamless adaptation across screen sizes.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-1 gap-3 rounded-lg border border-[#cedbe8] dark:border-[#314d68] bg-slate-50 dark:bg-[#182634] p-4 flex-col"
+                >
+                  <div class="text-[#0d141c] dark:text-white">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24px"
+                      height="24px"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M160,40A88.09,88.09,0,0,0,81.29,88.67,64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h2
+                      class="text-[#0d141c] dark:text-white text-base font-bold leading-tight"
+                    >
+                      CDN Friendly
+                    </h2>
+                    <p
+                      class="text-[#49739c] dark:text-[#90adcb] text-sm font-normal leading-normal"
+                    >
+                      Easily integrate Pixelwind into any project via CDN for a
+                      hassle-free setup.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Examples Page -->
+            <div class="flex flex-col gap-16 px-4 py-10 @container">
+              <!-- Section Header -->
+              <div class="flex flex-col gap-4 text-center">
+                <h2
+                  class="text-[#0d141c] dark:text-white text-[28px] font-bold leading-tight tracking-[-0.02em]"
+                >
+                  Examples
+                </h2>
+                <p
+                  class="text-[#49739c] dark:text-[#90adcb] text-base max-w-[720px] mx-auto"
+                >
+                  See how Pixelwind utilities make it easy to build consistent,
+                  responsive components. Each example shows the
+                  <span class="font-semibold">code</span> and the
+                  <span class="font-semibold">live preview</span>.
+                </p>
+              </div>
+
+              <!-- Example Wrapper -->
+              <div class="flex flex-col gap-12" id="examples">
+                <!-- Example: Card -->
+                <div class="flex flex-col gap-6">
+                  <!-- Title + Description -->
+                  <div class="flex flex-col gap-2">
+                    <h3
+                      class="text-lg font-bold text-[#0d141c] dark:text-white"
+                    >
+                      Card Example
+                    </h3>
+                    <p class="text-sm text-[#49739c] dark:text-[#90adcb]">
+                      A simple card built with Pixelwind spacing utilities
+                      (<code>p-16px</code>,
+                      <code>mt-12px</code>, <code>w-250px</code>, etc.).
+                    </p>
+                  </div>
+
+                  <!-- Code + Preview Grid -->
+                  <div class="grid @[720px]:grid-cols-2 gap-8 items-start">
+                    <!-- Code Block -->
+                    <div
+                      class="code-block relative bg-[#0d141c] rounded-lg overflow-hidden"
+                    >
+                      <button
+                        id="copy-card-code"
+                        class="absolute top-2 right-2 text-xs bg-gray-700 hover:bg-gray-600 text-white px-2 py-1 rounded-md"
+                      >
+                        Copy
+                      </button>
+                      <pre
+                        class="overflow-x-auto text-sm leading-relaxed p-4 text-[#e2e8f0]"
+                      >
+<code class="language-html">
+&lt;!-- Pixelwind Card --&gt;
+&lt;div class="p-16px bg-white rounded-lg border w-250px"&gt;
+  &lt;div class="h-140px bg-cover bg-center rounded-md"
+       style="background-image: url(...)"&gt;&lt;/div&gt;
+
+  &lt;div class="pt-12px"&gt;
+    &lt;h3 class="text-lg font-bold"&gt;Pixelwind Card&lt;/h3&gt;
+    &lt;p class="mt-4px text-sm text-gray-600"&gt;
+      This card's spacing is set with Pixelwind.
+    &lt;/p&gt;
+    &lt;button class="mt-12px p-8px w-full bg-[#0d80f2] text-white rounded-md text-sm font-bold"&gt;
+      Learn More
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                    </div>
+
+                    <!-- Live Preview -->
+                    <div
+                      class="h-full p-6 rounded-lg border border-[#cedbe8] dark:border-[#314d68] bg-slate-50 dark:bg-[#101a23] flex justify-center items-center"
+                    >
+                      <style>
+                        .p-16px {
+                          padding: 16px;
+                        }
+                        .pt-12px {
+                          padding-top: 12px;
+                        }
+                        .p-8px {
+                          padding: 8px;
+                        }
+                        .mt-12px {
+                          margin-top: 12px;
+                        }
+                        .mt-4px {
+                          margin-top: 4px;
+                        }
+                        .w-250px {
+                          width: 250px;
+                        }
+                        .h-140px {
+                          height: 140px;
+                        }
+                      </style>
+                      <div
+                        class="p-16px w-250px bg-white dark:bg-slate-800 rounded-lg border border-[#cedbe8] dark:border-[#314d68] shadow-md"
+                      >
+                        <div
+                          class="h-140px w-full bg-cover bg-center rounded-md"
+                          style="
+                            background-image: url('https://images.unsplash.com/photo-1622737133809-d95047b9e673?q=80&w=1932&auto=format&fit=crop');
+                          "
+                        ></div>
+                        <div class="pt-12px">
+                          <h3
+                            class="text-lg font-bold text-[#0d141c] dark:text-white"
+                          >
+                            Pixelwind Card
+                          </h3>
+                          <p
+                            class="mt-4px text-sm text-[#49739c] dark:text-[#90adcb]"
+                          >
+                            This card's spacing is set with Pixelwind.
+                          </p>
+                          <button
+                            class="mt-12px p-8px w-full bg-[#0d80f2] text-white rounded-md text-sm font-bold"
+                          >
+                            Learn More
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Prism.js for Syntax Highlighting -->
+            <link
+              href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+              rel="stylesheet"
+            />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+          </div>
+        </main>
+        <footer class="flex justify-center mt-10">
+          <div class="flex max-w-[960px] flex-1 flex-col">
+            <div class="flex flex-col gap-6 px-5 py-10 text-center @container">
+              <!-- Links Row -->
+              <div
+                class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around"
+              >
+                <a
+                  class="flex items-center gap-2 text-[#49739c] dark:text-[#90adcb] text-base font-normal leading-normal min-w-40"
+                  href="https://github.com/therohitmahar/pixelwind"
+                  target="_blank"
+                >
+                  <!-- GitHub Icon -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.21 1.8 1.21 1.04 1.78 2.74 1.27 3.41.97.1-.75.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.17 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.65.23 2.87.11 3.17.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.4-5.25 5.68.42.36.8 1.08.8 2.18 0 1.57-.01 2.84-.01 3.22 0 .31.21.68.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"
+                    />
+                  </svg>
+                  GitHub
+                </a>
+
+                <a
+                  class="flex items-center gap-2 text-[#49739c] dark:text-[#90adcb] text-base font-normal leading-normal min-w-40"
+                  href="https://www.npmjs.com/package/pixelwind"
+                  target="_blank"
+                >
+                  <!-- npm Icon -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M1.5 0h21v21h-9v3h-6v-3h-6v-21zm3 3v15h3v-12h3v12h3v-15h-9z"
+                    />
+                  </svg>
+                  npm
+                </a>
+
+                <a
+                  class="flex items-center gap-2 text-[#49739c] dark:text-[#90adcb] text-base font-normal leading-normal min-w-40"
+                  href="https://github.com/therohitmahar/pixelwind/blob/main/LICENSE"
+                  target="_blank"
+                >
+                  <!-- License Icon -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 0h-14c-1.104 0-2 .896-2 2v20l9-4 9 4v-20c0-1.104-.896-2-2-2z"
+                    />
+                  </svg>
+                  License
+                </a>
+
+                <a
+                  class="flex items-center gap-2 text-[#49739c] dark:text-[#90adcb] text-base font-normal leading-normal min-w-40"
+                  href="https://twitter.com/therohitmahar"
+                  target="_blank"
+                >
+                  <!-- Twitter Icon -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M24 4.557a9.9 9.9 0 0 1-2.828.775 4.93 4.93 0 0 0 2.165-2.724 9.83 9.83 0 0 1-3.127 1.195 4.916 4.916 0 0 0-8.384 4.482A13.94 13.94 0 0 1 1.671 3.15a4.916 4.916 0 0 0 1.523 6.573A4.897 4.897 0 0 1 .964 9.1v.062a4.918 4.918 0 0 0 3.946 4.827 4.903 4.903 0 0 1-2.212.084 4.919 4.919 0 0 0 4.59 3.417A9.867 9.867 0 0 1 0 19.54a13.9 13.9 0 0 0 7.548 2.212c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.637A9.936 9.936 0 0 0 24 4.557z"
+                    />
+                  </svg>
+                  Twitter
+                </a>
+              </div>
+
+              <!-- Bottom -->
+              <p
+                class="text-[#49739c] dark:text-[#90adcb] text-base font-normal leading-normal"
+              >
+                © 2025 Pixelwind. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
-      <div class="p-10px" style="background: #ffe0b2">
-        Box with <code>p-10px</code>
-      </div>
-      <div class="gap-10px flex" style="background: #f3e5f5">
-        <span class="p-10px bg-gray">1</span>
-        <span class="p-10px bg-gray">2</span>
-        <span class="p-10px bg-gray">3</span>
-      </div>
-    </section>
+    </div>
 
-    <section class="card">
-      <h2>Media Queries</h2>
-      <p>
-        Pixelwind also supports responsive classes (e.g.,
-        <code>@media (min-width: 1600px)</code>).
-      </p>
-    </section>
+    <script>
+      // Theme Toggler
+      const themeToggleBtn = document.getElementById("theme-toggle-btn");
 
-    <footer class="mt-20px">
-      <p>Made with ❤️ using Pixelwind. Licensed MIT.</p>
-    </footer>
+      themeToggleBtn.addEventListener("click", () => {
+        // toggle theme
+        document.documentElement.classList.toggle("dark");
+
+        // update localStorage
+        if (document.documentElement.classList.contains("dark")) {
+          localStorage.theme = "dark";
+        } else {
+          localStorage.theme = "light";
+        }
+      });
+
+      // Copy Button for CDN Link
+      const copyCdnBtn = document.getElementById("copy-cdn-btn");
+      const cdnLinkArea = document.getElementById("cdn-link-area");
+
+      copyCdnBtn.addEventListener("click", () => {
+        cdnLinkArea.select();
+        document.execCommand("copy");
+        copyCdnBtn.textContent = "Copied!";
+        setTimeout(() => {
+          copyCdnBtn.textContent = "Copy";
+        }, 2000);
+      });
+
+      // Copy Button for Code Snippet
+      const copyCodeBtn = document.getElementById("copy-code-btn");
+      const codeSnippet = document.getElementById("code-snippet");
+
+      copyCodeBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(codeSnippet.innerText).then(() => {
+          copyCodeBtn.textContent = "Copied!";
+          setTimeout(() => {
+            copyCodeBtn.textContent = "Copy";
+          }, 2000);
+        });
+      });
+    </script>
   </body>
 </html>
