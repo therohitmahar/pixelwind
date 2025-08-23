@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixelwind – Utility-first CSS in Pixels</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/pixelwind@latest/index.css"
+    />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        line-height: 1.5;
+        padding: 20px;
+        max-width: 900px;
+        margin: auto;
+      }
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background: #fafafa;
+      }
+      code {
+        background: #f4f4f4;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      pre {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 12px;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="mb-20px">
+      <h1 class="title">🎨 Pixelwind</h1>
+      <p>
+        Utility-first CSS framework with pixel-based classes like
+        <code>p-20px</code>, <code>mb-10px</code>, and <code>gap-5px</code>.
+      </p>
+      <a href="https://github.com/YOUR_USERNAME/pixelwind" target="_blank"
+        >View on GitHub →</a
+      >
+    </header>
+
+    <section class="card">
+      <h2>Installation</h2>
+      <p>Use Pixelwind in your project in two ways:</p>
+      <h3>1. CDN (HTML)</h3>
+      <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/pixelwind@latest/index.css"&gt;</code></pre>
+
+      <h3>2. npm (React, Vite, etc.)</h3>
+      <pre><code>npm install pixelwind</code></pre>
+      <pre><code>import "pixelwind/index.css";</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Examples</h2>
+      <div class="p-20px mb-10px" style="background: #e0f7fa">
+        Box with <code>p-20px mb-10px</code>
+      </div>
+      <div class="p-10px" style="background: #ffe0b2">
+        Box with <code>p-10px</code>
+      </div>
+      <div class="gap-10px flex" style="background: #f3e5f5">
+        <span class="p-10px bg-gray">1</span>
+        <span class="p-10px bg-gray">2</span>
+        <span class="p-10px bg-gray">3</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Media Queries</h2>
+      <p>
+        Pixelwind also supports responsive classes (e.g.,
+        <code>@media (min-width: 1600px)</code>).
+      </p>
+    </section>
+
+    <footer class="mt-20px">
+      <p>Made with ❤️ using Pixelwind. Licensed MIT.</p>
+    </footer>
+  </body>
+</html>
