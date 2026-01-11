@@ -1,468 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation - Pixelwind</title>
     <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap"
       rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Space+Grotesk%3Awght%40400%3B500%3B700"
     />
-    <title>Pixelwind - Docs</title>
-    <link rel="icon" type="image/icon" href="./favicon.ico" />
-
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      /* For code block scrolling */
-      .docs-table-container {
-        max-height: 500px;
-        overflow-y: auto;
-      }
-    </style>
-    <script>
+    <link rel="icon" type="image/png" href="./favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../pixelwind.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixelwind@1.0.4/pixelwind.min.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ddaa97",
+              secondary: "#833e24",
+              accent: "#d87853",
+              "background-light": "#f8f6f6",
+              "background-dark": "#130b07", // Updated to match user request
+              surface: "#1e1714",
+              "border-color": "#40312b",
+              "text-main": "#f6ede9",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              body: ["Noto Sans", "sans-serif"],
+              mono: ["monospace"],
+            },
+            backgroundImage: {
+              "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            },
+          },
+        },
       };
     </script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
+    <style>
+      .custom-scrollbar::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
       }
-    </script>
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #1e1714;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #40312b;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #ddaa97;
+      }
+      .glass-nav {
+        background: rgba(19, 11, 7, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
   </head>
-  <body class="bg-slate-50 dark:bg-[#101a23]">
-    <div
-      class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden"
-      style="font-family: 'Space Grotesk', 'Noto Sans', sans-serif"
+  <body
+    class="bg-background-dark font-display text-text-main antialiased selection:bg-primary selection:text-background-dark"
+  >
+    <!-- NAV -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-border-color"
     >
-      <div class="layout-container flex h-full grow flex-col">
-        <header
-          class="fixed w-full top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] dark:border-b-[#223649] bg-slate-50/70 dark:bg-[#101a23]/70 backdrop-blur-md shadow-sm px-10 py-3"
-        >
-          <div class="flex items-center gap-8">
-            <a
-              href="index.html"
-              class="flex items-center gap-4 text-[#0d141c] dark:text-white"
+      <div
+        class="max-w-[1280px] mx-auto px-24px h-16 flex items-center justify-between"
+      >
+        <a href="/docs/index.html">
+          <div class="flex items-center gap-12px text-text-main">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <div class="size-4">
-                <svg
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-              </div>
-              <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">
-                Pixelwind
-              </h2>
+              <defs>
+                <linearGradient id="pwGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FFD6B0" />
+                  <stop offset="100%" stop-color="#FF9F7A" />
+                </linearGradient>
+              </defs>
+              <rect
+                x="8"
+                y="0"
+                width="6"
+                height="48"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="21"
+                y="0"
+                width="6"
+                height="48"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="34"
+                y="0"
+                width="6"
+                height="48"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="0"
+                y="8"
+                width="48"
+                height="6"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="0"
+                y="21"
+                width="48"
+                height="6"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="0"
+                y="34"
+                width="48"
+                height="6"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+            </svg>
+            <h2 class="text-20px font-bold tracking-tight">Pixelwind</h2>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <nav class="flex gap-24px">
+            <a class="text-14px font-medium text-primary" href="docs.html"
+              >Docs</a
+            >
+            <a
+              class="text-14px font-medium hover:text-primary transition-colors"
+              href="playground.html"
+              >Playground</a
+            >
+          </nav>
+          <div class="h-16px w-[1px] bg-border-color"></div>
+          <div class="flex items-center gap-16px">
+            <a
+              class="text-text-main hover:text-white transition-colors"
+              href="https://www.npmjs.com/package/pixelwind"
+              aria-label="View on npm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                class="h-8 w-8"
+              >
+                <path fill="#d50000" d="M0,15h48v17H24v3H13v-3H0V15z"></path>
+                <path
+                  fill="#fff"
+                  d="M3 29L8 29 8 21 11 21 11 29 13 29 13 18 3 18zM16 18v14h5v-3h5V18H16zM24 26h-3v-5h3V26zM29 18L29 29 34 29 34 21 37 21 37 29 40 29 40 21 43 21 43 29 45 29 45 18z"
+                ></path>
+              </svg>
             </a>
-            <div class="flex items-center gap-9">
-              <a
-                class="text-[#0d80f2] dark:text-white text-sm font-bold leading-normal"
-                href="docs.html"
-                >Docs</a
+            <a
+              class="text-text-main hover:text-white transition-colors"
+              href="https://github.com/therohitmahar/pixelwind"
+            >
+              <svg
+                aria-hidden="true"
+                class="h-24px w-24px fill-current"
+                viewBox="0 0 24 24"
               >
-              <a
-                class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
-                href="index.html#examples"
-                >Examples</a
-              >
-              <a
-                class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
-                href="https://github.com/therohitmahar/pixelwind"
-                target="_blank"
-                >GitHub</a
-              >
-            </div>
-          </div>
-          <div class="flex flex-1 justify-end gap-4">
-            <a href="index.html#quick-start" class="flex items-center">
-              <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0d80f2] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-              >
-                <span class="truncate">Get Started</span>
-              </button>
+                <path
+                  d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.312-3.369-1.312-.455-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.597 1.028 2.688 0 3.848-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12c0-5.523-4.477-10-10-10z"
+                ></path>
+              </svg>
             </a>
+            <div class="h-16px w-[1px] bg-border-color"></div>
+            <span id="version-text" class="text-12px font-mono text-gray-400"
+              >v1.0.5</span
+            >
           </div>
-        </header>
-        <main class="gap-1 px-6 flex flex-1 justify-center py-5 pt-16">
-          <aside
-            class="fixed top-[56px] left-0 z-40 layout-content-container flex-col w-60 h-[calc(100vh-56px)] hidden sm:flex bg-white/20 dark:bg-[#0d141c]/20 backdrop-blur-lg border-r border-white/20 dark:border-gray-800"
-          >
-            <div class="h-full flex-col p-4 overflow-y-auto">
-              <nav class="flex flex-col gap-1">
-                <p
-                  class="px-3 pt-2 pb-1 text-xs font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase"
-                >
-                  Spacing
-                </p>
-                <a
-                  href="#padding"
-                  class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-200 dark:bg-[#223649]"
-                >
-                  <p
-                    class="text-[#0d141c] dark:text-white text-sm font-medium leading-normal"
-                  >
-                    Padding
-                  </p>
-                </a>
-                <a
-                  href="#margin"
-                  class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-[#223649]"
-                >
-                  <p
-                    class="text-[#49739c] dark:text-[#90adcb] text-sm font-medium leading-normal"
-                  >
-                    Margin
-                  </p>
-                </a>
-                <a
-                  href="#gap"
-                  class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-[#223649]"
-                >
-                  <p
-                    class="text-[#49739c] dark:text-[#90adcb] text-sm font-medium leading-normal"
-                  >
-                    Gap
-                  </p>
-                </a>
-                <p
-                  class="px-3 pt-4 pb-1 text-xs font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase"
-                >
-                  Sizing
-                </p>
-                <a
-                  href="#width"
-                  class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-[#223649]"
-                >
-                  <p
-                    class="text-[#49739c] dark:text-[#90adcb] text-sm font-medium leading-normal"
-                  >
-                    Width
-                  </p>
-                </a>
-                <a
-                  href="#height"
-                  class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-[#223649]"
-                >
-                  <p
-                    class="text-[#49739c] dark:text-[#90adcb] text-sm font-medium leading-normal"
-                  >
-                    Height
-                  </p>
-                </a>
-              </nav>
-            </div>
-          </aside>
-          <div
-            class="layout-content-container flex flex-col max-w-[960px] flex-1 ml-0 sm:ml-60"
-          >
-            <section id="padding" class="docs-section scroll-mt-24">
-              <div class="px-4 pt-8">
-                <h2
-                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
-                >
-                  Padding
-                </h2>
-                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
-                  Utilities for controlling an element's padding from 1px to
-                  30px.
-                </p>
-              </div>
-              <div class="px-4 py-8">
-                <div
-                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
-                >
-                  <div
-                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
-                  >
-                    <div>Class</div>
-                    <div>CSS</div>
-                  </div>
-                  <div class="docs-table-container">
-                    <div
-                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
-                    ></div>
-                  </div>
-                  <div
-                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
-                  >
-                    <button
-                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
-                    >
-                      Show More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section id="margin" class="docs-section scroll-mt-24">
-              <div class="px-4 pt-8">
-                <h2
-                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
-                >
-                  Margin
-                </h2>
-                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
-                  Utilities for controlling an element's margin from 1px to
-                  30px.
-                </p>
-              </div>
-              <div class="px-4 py-8">
-                <div
-                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
-                >
-                  <div
-                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
-                  >
-                    <div>Class</div>
-                    <div>CSS</div>
-                  </div>
-                  <div class="docs-table-container">
-                    <div
-                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
-                    ></div>
-                  </div>
-                  <div
-                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
-                  >
-                    <button
-                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
-                    >
-                      Show More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section id="gap" class="docs-section scroll-mt-24">
-              <div class="px-4 pt-8">
-                <h2
-                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
-                >
-                  Gap
-                </h2>
-                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
-                  Utilities for controlling the gap between grid and flexbox
-                  items from 1px to 30px.
-                </p>
-              </div>
-              <div class="px-4 py-8">
-                <div
-                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
-                >
-                  <div
-                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
-                  >
-                    <div>Class</div>
-                    <div>CSS</div>
-                  </div>
-                  <div class="docs-table-container">
-                    <div
-                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
-                    ></div>
-                  </div>
-                  <div
-                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
-                  >
-                    <button
-                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
-                    >
-                      Show More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section id="width" class="docs-section scroll-mt-24">
-              <div class="px-4 pt-8">
-                <h2
-                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
-                >
-                  Width
-                </h2>
-                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
-                  Utilities for setting an element's width from 1px to 30px.
-                </p>
-              </div>
-              <div class="px-4 py-8">
-                <div
-                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
-                >
-                  <div
-                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
-                  >
-                    <div>Class</div>
-                    <div>CSS</div>
-                  </div>
-                  <div class="docs-table-container">
-                    <div
-                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
-                    ></div>
-                  </div>
-                  <div
-                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
-                  >
-                    <button
-                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
-                    >
-                      Show More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section id="height" class="docs-section scroll-mt-24">
-              <div class="px-4 pt-8">
-                <h2
-                  class="text-4xl lg:text-5xl font-bold tracking-tight text-[#0d141c] dark:text-white"
-                >
-                  Height
-                </h2>
-                <p class="mt-4 text-lg text-[#49739c] dark:text-[#90adcb]">
-                  Utilities for setting an element's height from 1px to 30px.
-                </p>
-              </div>
-              <div class="px-4 py-8 pb-12">
-                <div
-                  class="rounded-xl border border-[#cedbe8] dark:border-[#314d68]"
-                >
-                  <div
-                    class="sticky top-[85px] z-10 flex justify-between font-mono text-sm font-semibold text-[#0d141c] dark:text-white bg-slate-100 dark:bg-[#182634] px-4 py-2 rounded-t-xl"
-                  >
-                    <div>Class</div>
-                    <div>CSS</div>
-                  </div>
-                  <div class="docs-table-container">
-                    <div
-                      class="docs-content px-4 divide-y divide-[#cedbe8] dark:divide-[#314d68]"
-                    ></div>
-                  </div>
-                  <div
-                    class="px-4 py-3 bg-slate-50 dark:bg-[#182634]/50 rounded-b-xl text-center"
-                  >
-                    <button
-                      class="show-more-btn text-sm font-semibold text-[#0d80f2] hover:text-blue-600"
-                    >
-                      Show More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </main>
+        </div>
       </div>
-    </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main
+      class="pt-16 min-h-screen flex flex-col items-center py-10 px-16px md:px-8"
+    >
+      <div class="w-full max-w-[1200px] flex flex-col gap-8">
+        <!-- Page Header -->
+        <div class="flex flex-col gap-12px max-w-2xl px-8px">
+          <h1
+            class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-white"
+          >
+            Documentation
+          </h1>
+          <p class="text-[#bea69d] text-18px font-normal leading-relaxed">
+            Everything you need to know about using Pixelwind in your projects.
+          </p>
+        </div>
+
+        <!-- Introduction -->
+        <section class="flex flex-col gap-24px">
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h2 class="text-24px font-bold text-white mb-16px">
+              What is Pixelwind?
+            </h2>
+            <p class="text-gray-300 leading-relaxed mb-16px">
+              Pixelwind is a lightweight, utility-first CSS package built for
+              developers who want exact control over spacing and sizing. Instead
+              of abstract scales or configuration files, it offers clear,
+              pixel-based utility classes for padding, margin, gap, width, and
+              height.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              The class name directly represents the value applied, making
+              layouts predictable, readable, and easy to maintain—especially
+              when working with pixel-perfect designs.
+            </p>
+          </div>
+        </section>
+
+        <!-- Installation -->
+        <section class="flex flex-col gap-24px">
+          <h2 class="text-30px font-bold text-white px-8px">Installation</h2>
+
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3 class="text-20px font-bold text-white mb-16px">NPM</h3>
+            <p class="text-gray-300 mb-16px">Install Pixelwind via npm:</p>
+            <div
+              class="bg-[#0d0806] border border-border-color rounded p-16px font-mono text-14px text-primary"
+            >
+              npm install pixelwind
+            </div>
+            <p class="text-gray-300 mt-16px">Then import it in your project:</p>
+            <div
+              class="bg-[#0d0806] border border-border-color rounded p-16px font-mono text-14px text-gray-300 mt-12px"
+            >
+              import 'pixelwind';
+            </div>
+          </div>
+
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3 class="text-20px font-bold text-white mb-16px">CDN</h3>
+            <p class="text-gray-300 mb-16px">
+              Include Pixelwind directly in your HTML:
+            </p>
+            <div
+              class="bg-[#0d0806] border border-border-color rounded p-16px font-mono text-14px text-gray-300 overflow-x-auto custom-scrollbar"
+            >
+              <span id="cdn-link"
+                >&lt;link rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/pixelwind@1.0.2/pixelwind.min.css"&gt;</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- Usage -->
+        <section class="flex flex-col gap-24px">
+          <h2 class="text-30px font-bold text-white px-8px">Usage</h2>
+
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <p class="text-gray-300 leading-relaxed mb-16px">
+              Using Pixelwind is intentionally simple. After installing it via
+              npm or including the stylesheet directly, you can start applying
+              utilities in your markup immediately.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-16px">
+              For example, adding
+              <code class="bg-[#0d0806] px-8px py-4px rounded text-primary"
+                >p-10px</code
+              >
+              applies 10 pixels of padding,
+              <code class="bg-[#0d0806] px-8px py-4px rounded text-primary"
+                >mb-20px</code
+              >
+              adds a 20-pixel bottom margin, and
+              <code class="bg-[#0d0806] px-8px py-4px rounded text-primary"
+                >w-120px</code
+              >
+              sets an element's width to exactly 120 pixels.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              There is no build step, no configuration, and no mental mapping
+              between class names and values—what you write is what you get.
+            </p>
+          </div>
+
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3 class="text-20px font-bold text-white mb-16px">Example</h3>
+            <div
+              class="bg-[#0d0806] border border-border-color rounded p-16px font-mono text-14px text-gray-300 overflow-x-auto custom-scrollbar"
+            >
+              &lt;div class="p-20px m-10px w-200px h-100px gap-15px"&gt;<br />
+              &nbsp;&nbsp;Pixel-perfect spacing<br />
+              &lt;/div&gt;
+            </div>
+          </div>
+        </section>
+
+        <!-- Available Classes -->
+        <section class="flex flex-col gap-24px">
+          <h2 class="text-30px font-bold text-white px-8px">Available Classes</h2>
+
+          <!-- Margin -->
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3
+              class="text-20px font-bold text-white mb-16px flex items-center gap-8px"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >space_bar</span
+              >
+              Margin
+            </h3>
+            <p class="text-gray-300 mb-16px">
+              Control element margins with pixel precision.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12px text-14px">
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">m-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">All sides</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">mt-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Top</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">mr-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Right</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">mb-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Bottom</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">ml-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Left</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Padding -->
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3
+              class="text-20px font-bold text-white mb-16px flex items-center gap-8px"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >padding</span
+              >
+              Padding
+            </h3>
+            <p class="text-gray-300 mb-16px">Add internal spacing to elements.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12px text-14px">
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">p-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">All sides</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">pt-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Top</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">pr-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Right</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">pb-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Bottom</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">pl-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Left</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">px-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Horizontal</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">py-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Vertical</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gap -->
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3
+              class="text-20px font-bold text-white mb-16px flex items-center gap-8px"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >grid_view</span
+              >
+              Gap
+            </h3>
+            <p class="text-gray-300 mb-16px">
+              Control spacing between flex and grid items.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12px text-14px">
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">gap-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Both directions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Width & Height -->
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3
+              class="text-20px font-bold text-white mb-16px flex items-center gap-8px"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >aspect_ratio</span
+              >
+              Width & Height
+            </h3>
+            <p class="text-gray-300 mb-16px">Set exact dimensions for elements.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12px text-14px">
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">w-{1-30}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Width (1px steps)</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">w-{40-300}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Width (10px steps)</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">h-{1-30}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Height (1px steps)</p>
+              </div>
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">h-{40-300}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Height (10px steps)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Font Size -->
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3
+              class="text-20px font-bold text-white mb-16px flex items-center gap-8px"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >text_fields</span
+              >
+              Font Size
+            </h3>
+            <p class="text-gray-300 mb-16px">Set precise font sizes.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12px text-14px">
+              <div class="bg-[#0d0806] p-12px rounded">
+                <code class="text-primary">text-{'{1-30}'}px</code>
+                <p class="text-gray-500 text-12px mt-4px">Font size</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Responsive -->
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <h3
+              class="text-20px font-bold text-white mb-16px flex items-center gap-8px"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >devices</span
+              >
+              Responsive (1600px+)
+            </h3>
+            <p class="text-gray-300 mb-16px">
+              Margin, padding, gap, width, and height utilities are available
+              with the
+              <code class="bg-[#0d0806] px-8px py-4px rounded text-primary"
+                >-1600</code
+              >
+              suffix for screens 1600px and wider. The values are automatically
+              scaled up.
+            </p>
+            <div
+              class="bg-[#0d0806] border border-border-color rounded p-16px font-mono text-14px text-gray-300"
+            >
+              &lt;div class="p-10px p-10px-1600"&gt;<br />
+              &nbsp;&nbsp;10px padding by default, 13.333px on large screens<br />
+              &lt;/div&gt;
+            </div>
+          </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="flex flex-col gap-24px">
+          <h2 class="text-30px font-bold text-white px-8px">Philosophy</h2>
+
+          <div
+            class="bg-surface border border-border-color rounded-lg p-24px md:p-8"
+          >
+            <p class="text-gray-300 leading-relaxed">
+              Pixelwind fits naturally into any frontend setup, whether you're
+              writing plain HTML or working inside a modern JavaScript
+              framework. It can be used on its own or alongside other styling
+              approaches without conflict. By focusing only on spacing and
+              sizing, Pixelwind stays small, fast, and opinionated in the right
+              way: it helps you translate designs directly into code with
+              confidence and precision, while keeping your markup clean and
+              expressive.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-border-color bg-surface py-12 mt-16">
+      <div
+        class="max-w-[1280px] mx-auto px-24px flex flex-col md:flex-row justify-between items-center gap-24px"
+      >
+        <div class="flex items-center gap-8px">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="pwGradientFooter" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6B7280" />
+                <stop offset="100%" stop-color="#4B5563" />
+              </linearGradient>
+            </defs>
+            <rect
+              x="8"
+              y="0"
+              width="6"
+              height="48"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="21"
+              y="0"
+              width="6"
+              height="48"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="34"
+              y="0"
+              width="6"
+              height="48"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="0"
+              y="8"
+              width="48"
+              height="6"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="0"
+              y="21"
+              width="48"
+              height="6"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="0"
+              y="34"
+              width="48"
+              height="6"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+          </svg>
+          <span class="font-bold text-gray-500">Pixelwind</span>
+        </div>
+        <div class="flex gap-8">
+          <a
+            class="text-14px text-gray-500 hover:text-primary transition-colors"
+            href="https://github.com/therohitmahar/pixelwind"
+            >GitHub</a
+          >
+          <a
+            class="text-14px text-gray-500 hover:text-primary transition-colors"
+            href="https://github.com/therohitmahar/pixelwind#readme"
+            >Docs</a
+          >
+          <a
+            class="text-14px text-gray-500 hover:text-primary transition-colors"
+            href="https://github.com/therohitmahar/pixelwind/releases"
+            >Changelog</a
+          >
+          <a
+            class="text-14px text-gray-500 hover:text-primary transition-colors"
+            href="https://github.com/therohitmahar/pixelwind/blob/main/LICENSE"
+            >License</a
+          >
+        </div>
+        <div class="text-12px text-gray-600">
+          © <span id="footer-year">2025</span> Pixelwind. MIT License.
+        </div>
+      </div>
+    </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // --- Define utility prefixes and their CSS properties ---
-        const paddingUtilities = [
-          { prefix: "p", prop: "padding" },
-          { prefix: "pt", prop: "padding-top" },
-          { prefix: "pr", prop: "padding-right" },
-          { prefix: "pb", prop: "padding-bottom" },
-          { prefix: "pl", prop: "padding-left" },
-        ];
-        const marginUtilities = [
-          { prefix: "m", prop: "margin" },
-          { prefix: "mt", prop: "margin-top" },
-          { prefix: "mr", prop: "margin-right" },
-          { prefix: "mb", prop: "margin-bottom" },
-          { prefix: "ml", prop: "margin-left" },
-        ];
-        const gapUtilities = [{ prefix: "gap", prop: "gap" }];
-        const widthUtilities = [{ prefix: "w", prop: "width" }];
-        const heightUtilities = [{ prefix: "h", prop: "height" }];
+      const yearEl = document.getElementById("footer-year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
 
-        // --- Function to generate and render utility classes ---
-        function generateAndRenderUtilities(
-          sectionId,
-          utilities,
-          visibleCount = 10
-        ) {
-          const container = document.querySelector(
-            `#${sectionId} .docs-content`
+      // Auto-update version from NPM
+      (async function initAutomation() {
+        try {
+          const response = await fetch(
+            "https://cdn.jsdelivr.net/npm/pixelwind/package.json"
           );
-          if (!container) return;
+          if (!response.ok) throw new Error("Failed to fetch version metadata");
 
-          let html = "";
-          let rowCounter = 0;
+          const pkg = await response.json();
+          const version = pkg.version;
 
-          utilities.forEach((util) => {
-            for (let i = 1; i <= 30; i++) {
-              const isHidden = rowCounter >= visibleCount;
-              const hiddenClass = isHidden ? "hidden hidden-row" : "";
+          if (version) {
+            // Update navbar version
+            const vText = document.getElementById("version-text");
+            if (vText) vText.textContent = `v${version}`;
 
-              html += `
-                        <div class="flex justify-between items-center py-3 ${hiddenClass}">
-                            <code class="text-[#0d80f2] font-mono">${util.prefix}-${i}px</code>
-                            <code class="text-[#49739c] dark:text-[#90adcb] font-mono">${util.prop}: ${i}px;</code>
-                        </div>
-                    `;
-              rowCounter++;
+            // Update CDN link in documentation
+            const cdnLink = document.getElementById("cdn-link");
+            if (cdnLink) {
+              cdnLink.textContent = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixelwind@${version}/pixelwind.min.css">`;
             }
-          });
-          container.innerHTML = html;
+          }
+        } catch (error) {
+          console.warn("Pixelwind version fetch error:", error);
         }
-
-        // --- Render all sections ---
-        generateAndRenderUtilities("padding", paddingUtilities, 10);
-        generateAndRenderUtilities("margin", marginUtilities, 10);
-        generateAndRenderUtilities("gap", gapUtilities, 10);
-        generateAndRenderUtilities("width", widthUtilities, 10);
-        generateAndRenderUtilities("height", heightUtilities, 10);
-
-        // --- Theme Toggler ---
-        const themeToggleBtn = document.getElementById("theme-toggle-btn");
-        if (themeToggleBtn) {
-          themeToggleBtn.addEventListener("click", () => {
-            document.documentElement.classList.toggle("dark");
-            localStorage.theme = document.documentElement.classList.contains(
-              "dark"
-            )
-              ? "dark"
-              : "light";
-          });
-        }
-
-        // --- Show More/Less Toggler ---
-        const showMoreButtons = document.querySelectorAll(".show-more-btn");
-        showMoreButtons.forEach((button) => {
-          button.addEventListener("click", () => {
-            const section = button.closest(".docs-section, section"); // Find parent section
-            const hiddenRows = section.querySelectorAll(".hidden-row");
-
-            let isShowing = button.getAttribute("data-showing") === "true";
-
-            hiddenRows.forEach((row) => {
-              row.classList.toggle("hidden");
-            });
-
-            isShowing = !isShowing;
-            button.textContent = isShowing ? "Show Less" : "Show More";
-            button.setAttribute("data-showing", isShowing);
-          });
-        });
-      });
+      })();
     </script>
   </body>
 </html>
