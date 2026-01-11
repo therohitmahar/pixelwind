@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixelwind - Precision Spacing CSS Utilities</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="./favicon.svg" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../pixelwind.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixelwind@1.0.4/pixelwind.min.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ddaa97",
+              secondary: "#833e24",
+              accent: "#d87853",
+              "background-light": "#f8f6f6",
+              "background-dark": "#130b07", // Updated to match user request
+              surface: "#1e1714",
+              "border-color": "#40312b",
+              "text-main": "#f6ede9",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              body: ["Noto Sans", "sans-serif"],
+              mono: ["monospace"],
+            },
+            backgroundImage: {
+              "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .custom-scrollbar::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #1e1714;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #40312b;
+        border-radius: 4px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #ddaa97;
+      }
+
+      .glass-nav {
+        background: rgba(19, 11, 7, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .cp_embed_wrapper iframe {
+        height: 80vh;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-dark font-display text-text-main antialiased selection:bg-primary selection:text-background-dark"
+  >
+    <!-- NAV -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-border-color"
+    >
+      <div
+        class="max-w-[1280px] mx-auto px-24px h-16 flex items-center justify-between"
+      >
+        <a href="/docs/index.html">
+          <div class="flex items-center gap-12px text-text-main">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="pwGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FFD6B0" />
+                  <stop offset="100%" stop-color="#FF9F7A" />
+                </linearGradient>
+              </defs>
+              <rect
+                x="8"
+                y="0"
+                width="6"
+                height="48"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="21"
+                y="0"
+                width="6"
+                height="48"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="34"
+                y="0"
+                width="6"
+                height="48"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="0"
+                y="8"
+                width="48"
+                height="6"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="0"
+                y="21"
+                width="48"
+                height="6"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+              <rect
+                x="0"
+                y="34"
+                width="48"
+                height="6"
+                rx="1.5"
+                fill="url(#pwGradient)"
+              />
+            </svg>
+            <h2 class="text-20px font-bold tracking-tight">Pixelwind</h2>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <nav class="flex gap-24px">
+            <a class="text-14px font-medium hover:text-primary" href="docs.html"
+              >Docs</a
+            >
+
+            <a
+              class="text-14px font-medium text-primary transition-colors"
+              href="playground.html"
+              >Playground</a
+            >
+          </nav>
+          <div class="h-16px w-[1px] bg-border-color"></div>
+          <div class="flex items-center gap-16px">
+            <a
+              class="text-text-main hover:text-white transition-colors"
+              href="https://www.npmjs.com/package/pixelwind"
+              aria-label="View on npm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                class="h-8 w-8"
+              >
+                <path fill="#d50000" d="M0,15h48v17H24v3H13v-3H0V15z"></path>
+                <path
+                  fill="#fff"
+                  d="M3 29L8 29 8 21 11 21 11 29 13 29 13 18 3 18zM16 18v14h5v-3h5V18H16zM24 26h-3v-5h3V26zM29 18L29 29 34 29 34 21 37 21 37 29 40 29 40 21 43 21 43 29 45 29 45 18z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="text-text-main hover:text-white transition-colors"
+              href="https://github.com/therohitmahar/pixelwind"
+            >
+              <svg
+                aria-hidden="true"
+                class="h-24px w-24px fill-current"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.312-3.369-1.312-.455-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.597 1.028 2.688 0 3.848-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12c0-5.523-4.477-10-10-10z"
+                ></path>
+              </svg>
+            </a>
+            <div class="h-16px w-[1px] bg-border-color"></div>
+            <span id="version-text" class="text-12px font-mono text-gray-400"
+              >v1.0.5</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PLAYGROUND -->
+    <main
+      class="pt-16 min-h-screen flex flex-col items-center py-10 px-16px md:px-8"
+    >
+      <div class="w-full max-w-[1200px] flex flex-col gap-8">
+        <div
+          class="flex flex-col gap-16px md:flex-row md:items-end md:justify-between px-8px"
+        >
+          <div class="flex flex-col gap-12px max-w-2xl">
+            <h1
+              class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-white"
+            >
+              Live Playground
+            </h1>
+            <p class="text-[#bea69d] text-18px font-normal leading-relaxed">
+                Test drive Pixelwind utilities right in your browser. Experiment
+                with spacing, typography, and sizing classes instantly. No setup
+                required.            </p>
+          </div>
+        </div>
+
+        <div class="flex-1 w-full overflow-hidden">
+          <div class="w-full h-full">
+            <p
+              class="codepen"
+              data-height="300"
+              data-theme-id="dark"
+              data-default-tab="html,result"
+              data-slug-hash="VYjKWLN"
+              data-pen-title="Pixelwind"
+              data-editable="true"
+              data-user="Therohitmahar"
+              style="
+                height: 300px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              "
+            >
+              <span
+                >See the Pen
+                <a href="https://codepen.io/Therohitmahar/pen/VYjKWLN"
+                  >Pixelwind</a
+                >
+                by Rohit Mahar (<a href="https://codepen.io/Therohitmahar"
+                  >@Therohitmahar</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <script
+              async
+              src="https://public.codepenassets.com/embed/index.js"
+            ></script>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-border-color bg-surface py-12">
+      <div
+        class="max-w-[1280px] mx-auto px-24px flex flex-col md:flex-row justify-between items-center gap-24px"
+      >
+        <div class="flex items-center gap-8px">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="pwGradientFooter" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6B7280" />
+                <stop offset="100%" stop-color="#4B5563" />
+              </linearGradient>
+            </defs>
+            <rect
+              x="8"
+              y="0"
+              width="6"
+              height="48"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="21"
+              y="0"
+              width="6"
+              height="48"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="34"
+              y="0"
+              width="6"
+              height="48"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="0"
+              y="8"
+              width="48"
+              height="6"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="0"
+              y="21"
+              width="48"
+              height="6"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+            <rect
+              x="0"
+              y="34"
+              width="48"
+              height="6"
+              rx="1.5"
+              fill="url(#pwGradientFooter)"
+            />
+          </svg>
+          <span class="font-bold text-gray-500">Pixelwind</span>
+        </div>
+        <div class="flex gap-8">
+          <a
+            class="text-14px text-gray-500 hover:text-primary transition-colors"
+            href="https://github.com/therohitmahar/pixelwind"
+            >GitHub</a
+          >
+          <a
+            class="text-14px text-gray-500 hover:text-primary transition-colors"
+            href="https://github.com/therohitmahar/pixelwind#readme"
+            >Docs</a
+          >
+          <a
+            class="text-14px text-gray-500 hover:text-primary transition-colors"
+            href="https://github.com/therohitmahar/pixelwind/releases"
+            >Changelog</a
+          >
+          <a
+            class="text-14px text-gray-500 hover:text-primary transition-colors"
+            href="https://github.com/therohitmahar/pixelwind/blob/main/LICENSE"
+            >License</a
+          >
+        </div>
+        <div class="text-12px text-gray-600">
+          © <span id="footer-year">2025</span> Pixelwind. MIT License.
+        </div>
+      </div>
+    </footer>
+    <script>
+      const yearEl = document.getElementById("footer-year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      // Auto-update version from NPM
+      (async function initAutomation() {
+        try {
+          const response = await fetch(
+            "https://cdn.jsdelivr.net/npm/pixelwind/package.json"
+          );
+          if (!response.ok) throw new Error("Failed to fetch version metadata");
+
+          const pkg = await response.json();
+          const version = pkg.version;
+
+          if (version) {
+            // Update navbar version
+            const vText = document.getElementById("version-text");
+            if (vText) vText.textContent = `v${version}`;
+          }
+        } catch (error) {
+          console.warn("Pixelwind version fetch error:", error);
+        }
+      })();
+    </script>
+  </body>
+</html>

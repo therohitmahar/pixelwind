@@ -1,0 +1,10 @@
+Release 1.0.5
+
+New Features:
+- Added `px-*` and `py-*` utilities for `padding-inline` and `padding-block`.
+- Added `text-*` utilities for `font-size` (1px–30px).
+- Extended `w-*` and `h-*` utilities from 40px to 300px (in 10px increments).
+
+Updates & Breaking Changes:
+- **Responsive System Overhaul**: At `min-width: 1600px`, utilities now automatically scale using a new interpolation logic.
+- Removed `-1600` suffix support. Standard classes (e.g., `.m-10px`) now automatically adjust their values at the 1600px breakpoint instead of requiring a separate class (like `.m-10px-1600`).
