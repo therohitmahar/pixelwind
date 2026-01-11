@@ -1,6 +1,6 @@
 {
   "name": "pixelwind",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Pixel-based utility-first CSS: spacing, gap, width/height (1–30px) with optional responsive variants.",
   "main": "pixelwind.css",
   "style": "pixelwind.css",
