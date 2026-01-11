@@ -15,7 +15,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../pixelwind.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixelwind/pixelwind.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pixelwind/pixelwind.min.css"
+    />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
       tailwind.config = {
@@ -85,7 +88,6 @@
         <div
           class="max-w-[1280px] mx-auto px-24px h-16 flex items-center justify-between"
         >
-        <a href="/docs/index.html">
           <div class="flex items-center gap-12px text-text-main">
             <svg
               width="32"
@@ -151,10 +153,12 @@
             </svg>
             <h2 class="text-20px font-bold tracking-tight">Pixelwind</h2>
           </div>
-        </a>
+
           <div class="hidden md:flex items-center gap-8">
             <nav class="flex gap-24px">
-              <a class="text-14px font-medium hover:text-primary" href="docs.html"
+              <a
+                class="text-14px font-medium hover:text-primary"
+                href="docs.html"
                 >Docs</a
               >
               <a
@@ -241,7 +245,8 @@
               class="max-w-2xl text-18px md:text-xl text-gray-400 mb-10 leading-relaxed"
             >
               Unlock pixel-perfect control with explicit, utility-first CSS
-              spacing (margin, padding, gap), sizing (width, height) and typography classes. No abstractions, no magic numbers, just direct
+              spacing (margin, padding, gap), sizing (width, height) and
+              typography classes. No abstractions, no magic numbers, just direct
               values.
             </p>
             <div
@@ -301,7 +306,9 @@
       <!-- Problem Statement -->
       <section class="py-20 bg-surface/30 border-y border-border-color">
         <div class="max-w-[960px] mx-auto px-24px text-center">
-          <h2 class="text-30px font-bold mb-24px">Stop guessing magic numbers</h2>
+          <h2 class="text-30px font-bold mb-24px">
+            Stop guessing magic numbers
+          </h2>
           <p class="text-18px text-gray-400 mb-12 max-w-2xl mx-auto">
             Designers don't think in "scales". They think in pixels. Why force a
             translation layer? Pixelwind bridges the gap between design tools
@@ -311,7 +318,8 @@
             <div
               class="p-24px rounded-lg bg-surface border border-border-color hover:border-primary/30 transition-colors"
             >
-              <span class="material-symbols-outlined text-primary text-4xl mb-16px"
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-16px"
                 >straighten</span
               >
               <h3 class="text-20px font-bold mb-8px">Precision</h3>
@@ -323,7 +331,8 @@
             <div
               class="p-24px rounded-lg bg-surface border border-border-color hover:border-primary/30 transition-colors"
             >
-              <span class="material-symbols-outlined text-primary text-4xl mb-16px"
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-16px"
                 >bolt</span
               >
               <h3 class="text-20px font-bold mb-8px">Zero Config</h3>
@@ -335,7 +344,8 @@
             <div
               class="p-24px rounded-lg bg-surface border border-border-color hover:border-primary/30 transition-colors"
             >
-              <span class="material-symbols-outlined text-primary text-4xl mb-16px"
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-16px"
                 >visibility</span
               >
               <h3 class="text-20px font-bold mb-8px">Readable</h3>
@@ -415,7 +425,9 @@
             <div
               class="p-24px bg-primary/5 rounded-lg border border-primary/10 mt-16px"
             >
-              <h4 class="font-bold text-primary mb-8px flex items-center gap-8px">
+              <h4
+                class="font-bold text-primary mb-8px flex items-center gap-8px"
+              >
                 <span class="material-symbols-outlined text-14px">info</span>
                 Framework Agnostic
               </h4>
@@ -487,7 +499,9 @@
                 E.g. <span class="text-primary">m</span> (margin) +
                 <span class="text-primary">10</span> +
                 <span class="text-primary">px</span> =
-                <code class="text-white bg-white/10 px-4px rounded">m-10px</code>
+                <code class="text-white bg-white/10 px-4px rounded"
+                  >m-10px</code
+                >
               </p>
             </div>
           </div>
@@ -511,7 +525,9 @@
               href="https://codepen.io/Therohitmahar/pen/VYjKWLN"
             >
               Open in CodePen
-              <span class="material-symbols-outlined text-14px">open_in_new</span>
+              <span class="material-symbols-outlined text-14px"
+                >open_in_new</span
+              >
             </a>
           </div>
           <p
@@ -563,7 +579,9 @@
                 <th class="py-16px px-16px font-medium text-gray-500 w-1/3">
                   Feature
                 </th>
-                <th class="py-16px px-16px font-bold text-white w-1/3">Pixelwind</th>
+                <th class="py-16px px-16px font-bold text-white w-1/3">
+                  Pixelwind
+                </th>
                 <th class="py-16px px-16px font-medium text-gray-500 w-1/3">
                   Typical Utility CSS
                 </th>
@@ -575,17 +593,27 @@
                 <td class="py-16px px-16px text-primary font-bold">
                   Explicit (p-10px)
                 </td>
-                <td class="py-16px px-16px text-gray-500">Abstract (p-2, p-3)</td>
+                <td class="py-16px px-16px text-gray-500">
+                  Abstract (p-2, p-3)
+                </td>
               </tr>
               <tr class="border-b border-border-color/50">
                 <td class="py-16px px-16px text-gray-300">Configuration</td>
-                <td class="py-16px px-16px text-primary font-bold">Zero Config</td>
-                <td class="py-16px px-16px text-gray-500">config.js required</td>
+                <td class="py-16px px-16px text-primary font-bold">
+                  Zero Config
+                </td>
+                <td class="py-16px px-16px text-gray-500">
+                  config.js required
+                </td>
               </tr>
               <tr class="border-b border-border-color/50">
                 <td class="py-16px px-16px text-gray-300">Design Handoff</td>
-                <td class="py-16px px-16px text-primary font-bold">1:1 Matching</td>
-                <td class="py-16px px-16px text-gray-500">Translation needed</td>
+                <td class="py-16px px-16px text-primary font-bold">
+                  1:1 Matching
+                </td>
+                <td class="py-16px px-16px text-gray-500">
+                  Translation needed
+                </td>
               </tr>
               <tr class="border-b border-border-color/50">
                 <td class="py-16px px-16px text-gray-300">File Size</td>
@@ -597,7 +625,9 @@
               <tr>
                 <td class="py-16px px-16px text-gray-300">Javascript</td>
                 <td class="py-16px px-16px text-primary font-bold">None</td>
-                <td class="py-16px px-16px text-gray-500">Often required for JIT</td>
+                <td class="py-16px px-16px text-gray-500">
+                  Often required for JIT
+                </td>
               </tr>
             </tbody>
           </table>
@@ -625,12 +655,14 @@
             >
               --
             </div>
-            <div class="text-12px text-gray-500 font-mono mt-4px">GitHub Stars</div>
+            <div class="text-12px text-gray-500 font-mono mt-4px">
+              GitHub Stars
+            </div>
           </div>
         </div>
 
         <!-- Forks -->
-        <div
+        <!-- <div
           class="flex items-center gap-12px group translate-y-0 hover:-translate-y-1 transition-transform duration-300"
         >
           <div
@@ -649,7 +681,7 @@
             </div>
             <div class="text-12px text-gray-500 font-mono mt-4px">Forks</div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Downloads -->
         <div
@@ -691,7 +723,9 @@
             >
               --
             </div>
-            <div class="text-12px text-gray-500 font-mono mt-4px">Last Updated</div>
+            <div class="text-12px text-gray-500 font-mono mt-4px">
+              Last Updated
+            </div>
           </div>
         </div>
       </div>
@@ -764,9 +798,10 @@
               >License</a
             >
           </div>
-                  <div class="text-12px text-gray-600">
-                    © <span id="footer-year">2025</span> Pixelwind. MIT License.
-                  </div>        </div>
+          <div class="text-12px text-gray-600">
+            © <span id="footer-year">2025</span> Pixelwind. MIT License.
+          </div>
+        </div>
       </footer>
     </div>
   </body>
